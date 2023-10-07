@@ -8,36 +8,26 @@
 </summary>
 
 - [OfficeOS](#officeos)
+  - [Table Of Contents](#table-of-contents)
   - [Keywords](#keywords)
   - [BootManager \& BootLoader](#bootmanager--bootloader)
   - [Kernel](#kernel)
   - [OperatingSystem](#operatingsystem)
     - [UID](#uid)
-    - [Folder Structure](#folder-structure)
     - [Cabinet](#cabinet)
-      - [File](#file)
-      - [Folder](#folder)
-    - [File Tool](#file-tool)
-      - [Processes](#processes)
-    - [Folder Tool](#folder-tool)
+    - [Folder Structure](#folder-structure)
+    - [Terminal Tool](#terminal-tool)
     - [Desktop](#desktop)
-      - [Widgets](#widgets)
-      - [Desktop Shortcuts](#desktop-shortcuts)
-      - [Drawer](#drawer)
-        - [Weather](#weather)
-        - [Clock](#clock)
-        - [Active Tools](#active-tools)
-        - [Tray](#tray)
-        - [Inbox](#inbox)
-    - [Safe](#safe)
-    - [Keys](#keys)
-    - [Roster](#roster)
+    - [File Tool](#file-tool)
+    - [Folder Tool](#folder-tool)
+    - [Context Menus](#context-menus)
+    - [Roster Tool](#roster-tool)
+    - [Safe Tool](#safe-tool)
+    - [Keys Tool](#keys-tool)
     - [Settings Tool](#settings-tool)
-    - [Sanitation](#sanitation)
     - [Logs Tool](#logs-tool)
     - [Tool Store](#tool-store)
-    - [Terminal Tool](#terminal-tool)
-    - [Context Menus](#context-menus)
+
 
 
 </details></section>
@@ -109,6 +99,111 @@ U-1-03-0_3 | User Group
 U-1-03-0_4 | Remote Connection
 U-1-03-0_5 | Deny Logon
 U-1-03-0_10 | Self
+
+
+
+### Cabinet
+
+  - File 
+    - File Data will be Organized in JSON Format
+    - Owner: Implied Full Control
+    - Folder: Content Property Contains List of File Names/UIDs
+    - Trash: Folder with Content Containing File Names/UIDs of files have been deleted
+
+  - Folder
+    - **Content Property:** Contains list of all file and folders within this Folder
+
+<section><details><summary>Properties</summary>
+
+    - Folder (Editable)
+    - Name (Editable)
+    - Content (Editable)
+    - Permissions (Editable)
+    - Type (Editable)
+      - Folder, Text, Shortcut, Application
+    - Language (Editable)
+    - Encoding (Editable)
+    - MetaData
+      - UID
+      - Version
+      - Description (Editable)
+      - ContentLength
+      - FileLength
+        - Length of Content & MetaData
+      - EncryptedKey ?
+        - Key used to encrypt the file?
+      - WhenCreated (System)
+      - WhoCreated (System)
+      - WhenChanged (System)
+      - WhenContentChanged (System)
+      - WhenOpened (System)
+      - IsDeleted (Editable)
+        - Used to determine if a file is deleted or not
+      - WhenDeleted (System)
+      - WhoDeleted (System)
+      - IsLocked (System)
+      - WhoLocked (System)
+      - IsReadOnly (System)
+      - IsEncrypted (System)
+        - Used to tell if a file is encrypted
+      - IsQuarantined
+        - Used to Prevent all processes from reading/opening
+      - IsCompressed
+      - IsUpdated
+        - Used to trigger other instances of this to update
+      - History
+        - Shows when who what
+        - [DateTime] UID Action Attribute (PreviousValue)
+          - [2023-10-06 17:58:38:357] U-1-0_1 Updated Content
+          - [2023-10-06 17:58:38:357] U-1-0_1 Updated Name (OldFileName)
+
+</details></section>
+
+<section><details><summary>Permissions</summary>
+
+    - Type: Explicit Deny, Implicit Allow/Deny
+    - Open
+    - OpenWith
+    - OpenAs
+    - Move
+      - Set Folder Property
+    - Copy
+      - Requires ReadContent
+      - Set to Deny to Prevent Copying
+    - Delete
+      - Requires WriteContent
+      - Set to Deny to Prevent Deletion
+    - Lock
+      - Requires WriteContent
+    - Read (Quick Permission)
+      - ReadContent
+      - ReadMetaData
+      - ReadHistory
+      - ReadPermission
+      - ReadOwner
+    - Write (Quick Permission)
+      - WriteMetaData
+      - WriteContent
+      - IsLocked
+      - WhoLocked
+    - ReadContent
+    - WriteContent
+    - ReadMetaData
+    - WriteMetaData
+      - Name
+      - Description
+      - Type
+      - Encoding
+      - Language
+    - ReadHistory
+    - ReadPermission
+    - WritePermission
+    - ReadOwner
+    - WriteOwner
+    - EncryptFile
+    - FullControl (Quick Permission)
+
+</details></section>
 
 
 ### Folder Structure
@@ -220,108 +315,43 @@ U-1-03-0_10 | Self
 - \\ (Remote Root)
   - \\ComputerName(or IP)\
 
-### Cabinet
 
-  - File 
-    - File Data will be Organized in JSON Format
-    - Owner: Implied Full Control
-    - Folder: Content Property Contains List of File Names/UIDs
-    - Trash: Folder with Content Containing File Names/UIDs of files have been deleted
+### Terminal Tool
+ - Scripting Pane
+ - Command History Pane
+ - AutoComplete
+ - Personalization
+   - Size, Colors
 
-  - Folder
-    - **Content Property:** Contains list of all file and folders within this Folder
+### Desktop
 
-<section><details><summary>Properties</summary>
+ - Widgets
 
-    - Folder (Editable)
-    - Name (Editable)
-    - Content (Editable)
-    - Permissions (Editable)
-    - Type (Editable)
-      - Folder, Text, Shortcut, Application
-    - Language (Editable)
-    - Encoding (Editable)
-    - MetaData
-      - UID
-      - Version
-      - Description (Editable)
-      - ContentLength
-      - FileLength
-        - Length of Content & MetaData
-      - EncryptedKey ?
-        - Key used to encrypt the file?
-      - WhenCreated (System)
-      - WhoCreated (System)
-      - WhenChanged (System)
-      - WhenContentChanged (System)
-      - WhenOpened (System)
-      - IsDeleted (Editable)
-        - Used to determine if a file is deleted or not
-      - WhenDeleted (System)
-      - WhoDeleted (System)
-      - IsLocked (System)
-      - WhoLocked (System)
-      - IsReadOnly (System)
-      - IsEncrypted (System)
-        - Used to tell if a file is encrypted
-      - IsQuarantined
-        - Used to Prevent all processes from reading/opening
-      - IsCompressed
-      - IsUpdated
-        - Used to trigger other instances of this to update
-      - History
-        - Shows when who what
-        - [DateTime] UID Action Attribute (PreviousValue)
-          - [2023-10-06 17:58:38:357] U-1-0_1 Updated Content
-          - [2023-10-06 17:58:38:357] U-1-0_1 Updated Name (OldFileName)
+ - Desktop Shortcuts
 
-</details></section>
+ - Drawer
 
-<section><details><summary>Permissions</summary>
+   - Weather
 
-    - Type: Explicit Deny, Implicit Allow/Deny
-    - Open
-    - OpenWith
-    - OpenAs
-    - Move
-      - Set Folder Property
-    - Copy
-      - Requires ReadContent
-      - Set to Deny to Prevent Copying
-    - Delete
-      - Requires WriteContent
-      - Set to Deny to Prevent Deletion
-    - Lock
-      - Requires WriteContent
-    - Read (Quick Permission)
-      - ReadContent
-      - ReadMetaData
-      - ReadHistory
-      - ReadPermission
-      - ReadOwner
-    - Write (Quick Permission)
-      - WriteMetaData
-      - WriteContent
-      - IsLocked
-      - WhoLocked
-    - ReadContent
-    - WriteContent
-    - ReadMetaData
-    - WriteMetaData
-      - Name
-      - Description
-      - Type
-      - Encoding
-      - Language
-    - ReadHistory
-    - ReadPermission
-    - WritePermission
-    - ReadOwner
-    - WriteOwner
-    - EncryptFile
-    - FullControl (Quick Permission)
+   - Clock
+    - Opens Calendar
 
-</details></section>
+ - Active Tools
+
+ - Tray
+  - Sound
+    - Output
+    - Input
+  - Connections
+    - Wifi
+    - Bluetooth
+    - Location
+    - HotSpot
+    - Cast
+  - Focus
+
+ - Inbox
+  - Focus
 
 
 
@@ -346,7 +376,7 @@ U-1-03-0_10 | Self
    - Help
    - Feedback
 
- - Processes
+**Processes**
 <section><details><summary>Open</summary>
 
         Open(Path, As, With, Parameters)
@@ -381,7 +411,6 @@ U-1-03-0_10 | Self
         - Update DestinationPath Folder Content Property to Include Path
         - Update History Property
         - Update WhenChanged Property
-
 </details>
 <details><summary>Copy</summary>
 
@@ -412,7 +441,6 @@ U-1-03-0_10 | Self
         - Update WhenContentChanged Property
         - Update WhenChanged Property
 </details>
-
 <details><summary>SaveMetaData</summary>
 
         SaveMetaData(Property, Value)
@@ -431,43 +459,71 @@ U-1-03-0_10 | Self
  - Search
    - Regex
 
-### Desktop
 
-#### Widgets
+### Context Menus
 
-#### Desktop Shortcuts
+ - File
+   - Open
+   - Move
+   - Copy
+   - Properties
+   - Advanced
+     - Open With
+     - Open As
+     - Open With As
+     - Encrypt/Decrypt
+     - Compress/Decompress
+   - Delete
 
-#### Drawer
+ - Folder
+   - Open
+   - New
+     - File
+     - Folder
+     - Shortcut
+   - Move
+   - Copy
+   - Paste
+   - Properties
+   - Advanced
+     - Open With
+     - Open As
+     - Open With As
+     - Encrypt/Decrypt
+     - Compress/Decompress
+   - Delete
 
-##### Weather
+ - Desktop
+   - New
+     - File
+     - Folder
+     - Shortcut
+   - Paste
+   - Next Background
+   - Tools
+     - Display
+     - Personalize
 
-##### Clock
-  - Opens Calendar
+ - Drawer
+   - Tasks
 
-##### Active Tools
+ - Drawer (Opened Tool)
+   - Minimize
+   - Maximize
+   - Open
+   - Advanced
+     - Open With
+     - Open As
+   - Dock/UnDuck
 
-##### Tray
-  - Sound
-    - Output
-    - Input
-  - Connections
-    - Wifi
-    - Bluetooth
-    - Location
-    - HotSpot
-    - Cast
-  - Focus
+ - Drawer (Docked Un-Opened Tool)
+   - Open
+   - UnDock
+   - Advanced
+     - Open With
+     - Open As
 
-##### Inbox
-  - Focus
 
-### Safe Tool
-
- - Encryption Keys
-
-### Keys Tool
-
- - Passwords
 
 ### Roster Tool
 
@@ -483,6 +539,15 @@ U-1-03-0_10 | Self
 - Default Access Groups
   - Remote Connection
   - Deny Logon
+
+
+### Safe Tool
+
+ - Encryption Keys
+
+### Keys Tool
+
+ - Passwords
 
 ### Settings Tool
     All Settings are displayed here
@@ -610,76 +675,5 @@ U-1-03-0_10 | Self
 
 
 ### Tool Store
-
-
-### Terminal Tool
- - Scripting Pane
- - Command History Pane
- - AutoComplete
- - Personalization
-   - Size, Colors
-
-### Context Menus
-
- - File
-   - Open
-   - Move
-   - Copy
-   - Properties
-   - Advanced
-     - Open With
-     - Open As
-     - Open With As
-     - Encrypt/Decrypt
-     - Compress/Decompress
-   - Delete
-
- - Folder
-   - Open
-   - New
-     - File
-     - Folder
-     - Shortcut
-   - Move
-   - Copy
-   - Paste
-   - Properties
-   - Advanced
-     - Open With
-     - Open As
-     - Open With As
-     - Encrypt/Decrypt
-     - Compress/Decompress
-   - Delete
-
- - Desktop
-   - New
-     - File
-     - Folder
-     - Shortcut
-   - Paste
-   - Next Background
-   - Tools
-     - Display
-     - Personalize
-
- - Drawer
-   - Tasks
-
- - Drawer (Opened Tool)
-   - Minimize
-   - Maximize
-   - Open
-   - Advanced
-     - Open With
-     - Open As
-   - Dock/UnDuck
-
- - Drawer (Docked Un-Opened Tool)
-   - Open
-   - UnDock
-   - Advanced
-     - Open With
-     - Open As
 
 </details></section>
