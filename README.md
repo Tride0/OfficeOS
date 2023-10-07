@@ -37,12 +37,7 @@
     - [Context Menus](#context-menus)
 
 
-<section>
-<details>
-<summary>
-
 ## Keywords
-<summary>
 
 |Item | Purpose |
 |:---:|:-------:|
@@ -60,10 +55,6 @@ Safe | Private Files
 Tray | Quick Settings<p>
 UID | Unique Identifier
 PinBoard | Shortcuts<p>Start Menu
-
-
-</details>
-</section>
 
 ## BootManager & BootLoader
 
