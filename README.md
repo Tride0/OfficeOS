@@ -8,7 +8,6 @@
   - [Keywords](#keywords)
   - [BootManager \& BootLoader](#bootmanager--bootloader)
   - [Kernel](#kernel)
-  - [Operating System](#operating-system)
   - [OperatingSystem](#operatingsystem)
     - [UID](#uid)
     - [Folder Structure](#folder-structure)
@@ -65,6 +64,7 @@ PinBoard | Shortcuts<p>Start Menu
 
 </details>
 </section>
+
 ## BootManager & BootLoader
 
 [GRUB](https://www.gnu.org/software/grub/grub-download.html)
