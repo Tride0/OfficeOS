@@ -2,7 +2,10 @@
 
 **Purpose:** Just a project to learn about all that goes into an OperatingSystem and who knows maybe something cool will happen along the way.
 
-<h2>Table Of Contents</h2>
+<section><details><summary>
+
+## Table Of Contents
+</summary>
 
 - [OfficeOS](#officeos)
   - [Keywords](#keywords)
@@ -37,7 +40,12 @@
     - [Context Menus](#context-menus)
 
 
+</details></section>
+
+<section><details><summary>
+
 ## Keywords
+</summary>
 
 |Item | Purpose |
 |:---:|:-------:|
@@ -56,6 +64,8 @@ Tray | Quick Settings<p>
 UID | Unique Identifier
 PinBoard | Shortcuts<p>Start Menu
 
+</details></section>
+
 ## BootManager & BootLoader
 
 [GRUB](https://www.gnu.org/software/grub/grub-download.html)
@@ -64,17 +74,16 @@ PinBoard | Shortcuts<p>Start Menu
 
 [Linux](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git)
 
-<section>
-<details>
-<summary>
+<section><details><summary>
+
 
 ## OperatingSystem
 </summary>
-**Notes:** At the moment, I'm thinking C# Code will make up the majority of the Operating System.
+Notes: At the moment, I'm thinking C# Code will make up the majority of the Operating System.
 
 ### UID
  - All Files and Processes have a Unique ID
- - AlphaNumeric Case Sensitive **(Base 62)**
+ - AlphaNumeric Case Sensitive (Base 62)
    - 0-9a-zA-Z
  - U-#-##-###-####-#####-######-#######-########
 
@@ -213,46 +222,47 @@ U-1-03-0_10 | Self
 
 ### Cabinet
 
-#### File 
-- File Data will be Organized in JSON Format
-- Owner: Implied Full Control
-- Folder: Content Property Contains List of File Names/UIDs
-- Trash: Folder with Content Containing File Names/UIDs of files have been deleted
+  - File 
+    - File Data will be Organized in JSON Format
+    - Owner: Implied Full Control
+    - Folder: Content Property Contains List of File Names/UIDs
+    - Trash: Folder with Content Containing File Names/UIDs of files have been deleted
 
-<section>
-    <details>
-        <summary>Properties</summary>
+  - Folder
+    - **Content Property:** Contains list of all file and folders within this Folder
 
-    - Folder **(Editable)**
-    - Name **(Editable)**
-    - Content **(Editable)**
-    - Permissions **(Editable)**
-    - Type **(Editable)**
+<section><details><summary>Properties</summary>
+
+    - Folder (Editable)
+    - Name (Editable)
+    - Content (Editable)
+    - Permissions (Editable)
+    - Type (Editable)
       - Folder, Text, Shortcut, Application
-    - Language **(Editable)**
-    - Encoding **(Editable)**
+    - Language (Editable)
+    - Encoding (Editable)
     - MetaData
       - UID
       - Version
-      - Description **(Editable)**
+      - Description (Editable)
       - ContentLength
       - FileLength
         - Length of Content & MetaData
       - EncryptedKey ?
         - Key used to encrypt the file?
-      - WhenCreated **(System)**
-      - WhoCreated **(System)**
-      - WhenChanged **(System)**
-      - WhenContentChanged **(System)**
-      - WhenOpened **(System)**
-      - IsDeleted **(Editable)**
+      - WhenCreated (System)
+      - WhoCreated (System)
+      - WhenChanged (System)
+      - WhenContentChanged (System)
+      - WhenOpened (System)
+      - IsDeleted (Editable)
         - Used to determine if a file is deleted or not
-      - WhenDeleted **(System)**
-      - WhoDeleted **(System)**
-      - IsLocked **(System)**
-      - WhoLocked **(System)**
-      - IsReadOnly **(System)**
-      - IsEncrypted
+      - WhenDeleted (System)
+      - WhoDeleted (System)
+      - IsLocked (System)
+      - WhoLocked (System)
+      - IsReadOnly (System)
+      - IsEncrypted (System)
         - Used to tell if a file is encrypted
       - IsQuarantined
         - Used to Prevent all processes from reading/opening
@@ -261,16 +271,13 @@ U-1-03-0_10 | Self
         - Used to trigger other instances of this to update
       - History
         - Shows when who what
-        - **[** DateTime **]** UID Action Attribute **(** PreviousValue **)**
+        - [DateTime] UID Action Attribute (PreviousValue)
           - [2023-10-06 17:58:38:357] U-1-0_1 Updated Content
           - [2023-10-06 17:58:38:357] U-1-0_1 Updated Name (OldFileName)
 
-    </details>
-</section>
+</details></section>
 
-<section>
-    <details>
-        <summary>Permissions</summary>
+<section><details><summary>Permissions</summary>
 
     - Type: Explicit Deny, Implicit Allow/Deny
     - Open
@@ -286,13 +293,13 @@ U-1-03-0_10 | Self
       - Set to Deny to Prevent Deletion
     - Lock
       - Requires WriteContent
-    - Read **(Quick Permission)**
+    - Read (Quick Permission)
       - ReadContent
       - ReadMetaData
       - ReadHistory
       - ReadPermission
       - ReadOwner
-    - Write **(Quick Permission)**
+    - Write (Quick Permission)
       - WriteMetaData
       - WriteContent
       - IsLocked
@@ -312,13 +319,11 @@ U-1-03-0_10 | Self
     - ReadOwner
     - WriteOwner
     - EncryptFile
-    - FullControl **(Quick Permission)**
-</details>
-</section>
+    - FullControl (Quick Permission)
+
+</details></section>
 
 
-#### Folder
- - **Content Property:** Contains list of all file and folders within this Folder
 
 ### File Tool
  - Language Character Support
@@ -341,10 +346,8 @@ U-1-03-0_10 | Self
    - Help
    - Feedback
 
-#### Processes
-<section>
-    <details>
-        <summary>Open</summary>
+ - Processes
+<section><details><summary>Open</summary>
 
         Open(Path, As, With, Parameters)
         - If As
@@ -356,8 +359,7 @@ U-1-03-0_10 | Self
         - Update WhenOpened Property
         - Set IsReadOnly Property to True
 </details>
-    <details>
-        <summary>Delete</summary>
+<details><summary>Delete</summary>
 
         Delete(Path, As)
         - If As
@@ -367,8 +369,7 @@ U-1-03-0_10 | Self
         - Update Folder Property to 'Deleted'
         - Update IsDeleted, WhenDeleted, WhoDeleted Properties
 </details>
-    <details>
-        <summary>Move</summary>
+<details><summary>Move</summary>
 
         Move(Path, DestinationPath, As)
         - If As
@@ -380,9 +381,9 @@ U-1-03-0_10 | Self
         - Update DestinationPath Folder Content Property to Include Path
         - Update History Property
         - Update WhenChanged Property
+
 </details>
-    <details>
-        <summary>Copy</summary>
+<details><summary>Copy</summary>
 
         Copy(Path, DestinationPath, As, KeepMetaData)
         - If As
@@ -397,8 +398,7 @@ U-1-03-0_10 | Self
         - Set Folder as Destination
         - Update History Property
 </details>
-    <details>
-        <summary>SaveContent</summary>
+<details><summary>SaveContent</summary>
 
         SaveContent(NewContent)
         - Check IsLocked Property
@@ -412,16 +412,16 @@ U-1-03-0_10 | Self
         - Update WhenContentChanged Property
         - Update WhenChanged Property
 </details>
-    <details>
-        <summary>SaveMetaData</summary>
+
+<details><summary>SaveMetaData</summary>
 
         SaveMetaData(Property, Value)
         - Check Permission for Property
         - Set Property to Value
         - Update History Property
         - Update WhenChanged Property
-    </details>
-</section>
+
+</details></section>
 
 
 
@@ -461,11 +461,15 @@ U-1-03-0_10 | Self
 ##### Inbox
   - Focus
 
-### Safe
+### Safe Tool
 
-### Keys
+ - Encryption Keys
 
-### Roster
+### Keys Tool
+
+ - Passwords
+
+### Roster Tool
 
 - Default Accounts
   - System
@@ -602,12 +606,11 @@ U-1-03-0_10 | Self
 </details>
 </section>
 
-### Sanitation
-**Purpose:** Overwrite disk on files that have been marked for deletion
-
 ### Logs Tool
 
+
 ### Tool Store
+
 
 ### Terminal Tool
  - Scripting Pane
@@ -615,7 +618,6 @@ U-1-03-0_10 | Self
  - AutoComplete
  - Personalization
    - Size, Colors
-
 
 ### Context Menus
 
@@ -680,9 +682,4 @@ U-1-03-0_10 | Self
      - Open With
      - Open As
 
-</details>
-</section>
-
-
-
-
+</details></section>
