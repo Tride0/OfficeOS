@@ -2,6 +2,10 @@
 
 **Purpose:** Just a project to learn about all that goes into an OperatingSystem and who knows maybe something cool will happen along the way.
 
+**Notes?**
+1. Customizable
+2. Open
+
 <section><details><summary>
 
 ## Table Of Contents
@@ -60,6 +64,7 @@ PinBoard | Shortcuts<p>Start Menu
 
 [GRUB](https://www.gnu.org/software/grub/grub-download.html)
 
+
 ## Kernel
 
 [Linux](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git)
@@ -99,7 +104,6 @@ U-1-03-0_3 | User Group
 U-1-03-0_4 | Remote Connection
 U-1-03-0_5 | Deny Logon
 U-1-03-0_10 | Self
-
 
 
 ### Cabinet
@@ -161,7 +165,9 @@ U-1-03-0_10 | Self
 
 <section><details><summary>Permissions</summary>
 
-    - Type: Explicit Deny, Implicit Allow/Deny
+    - Explicit Deny, Implicit Allow/Deny
+    - Type: Allow, Deny
+    - _Override_
     - Open
     - OpenWith
     - OpenAs
@@ -213,7 +219,7 @@ U-1-03-0_10 | Self
       - \Information
         - OS Version, OS Type, Time, Languages
       - \Tools
-       - \Files
+       - \File
        - \Folder
        - \Desktop
        - \Command
@@ -288,7 +294,6 @@ U-1-03-0_10 | Self
         - \Privacy
         - \Backups
         - \Safe
-        - \Update
       - \Devices
         - \Bluetooth
         - \Displays
@@ -312,6 +317,14 @@ U-1-03-0_10 | Self
         - \Documents
             - \Media
             - \Downloads
+  - \Users
+    - \<UserID>
+      - Desktop
+      - Files
+        - Media
+        - Documents
+        - Settings
+        - Temp
 - \\ (Remote Root)
   - \\ComputerName(or IP)\
 
@@ -649,7 +662,6 @@ U-1-03-0_10 | Self
 - Tools
   - File Tool
   - Folders Tool
-  - 
 - Context Menus
   - File Menu
   - Folder Menu
