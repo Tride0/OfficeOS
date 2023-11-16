@@ -68,6 +68,7 @@
 ## Kernel
 
 [Linux](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git)
+
 [KernelNewbies](https://kernelnewbies.org/kernelbuild)
 
 <section><details><summary>
