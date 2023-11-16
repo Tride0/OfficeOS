@@ -3,12 +3,14 @@
 **Purpose:** Just a project to learn about all that goes into an OperatingSystem and who knows maybe something cool will happen along the way.
 
 **Notes?**
+
 1. Customizable
 2. Open
 
 <section><details><summary>
 
 ## Table Of Contents
+
 </summary>
 
 - [OfficeOS](#officeos)
@@ -32,31 +34,30 @@
     - [Logs Tool](#logs-tool)
     - [Tool Store](#tool-store)
 
-
-
 </details></section>
 
 <section><details><summary>
 
 ## Keywords
+
 </summary>
 
-|Item | Purpose |
-|:---:|:-------:|
-System | Settings
-Task | Process
-Tool | Software
-Cabinet | File System
-Desktop | Background Overlay<p>Tool Icons Shortcuts
-Widgets | Desktop Mini-Tools
-Drawer | Desktop Bar<p>Showing Open Tools
-Inbox | Desktop Pane<p>Showing Notifications
-Roster | Directory
-Keys | Passwords<p>Encryption Keys
-Safe | Private Files
-Tray | Quick Settings<p>
-UID | Unique Identifier
-PinBoard | Shortcuts<p>Start Menu
+|   Item   |                  Purpose                  |
+| :------: | :---------------------------------------: |
+|  System  |                 Settings                  |
+|   Task   |                  Process                  |
+|   Tool   |                 Software                  |
+| Cabinet  |                File System                |
+| Desktop  | Background Overlay<p>Tool Icons Shortcuts |
+| Widgets  |            Desktop Mini-Tools             |
+|  Drawer  |     Desktop Bar<p>Showing Open Tools      |
+|  Inbox   |   Desktop Pane<p>Showing Notifications    |
+|  Roster  |                 Directory                 |
+|   Keys   |        Passwords<p>Encryption Keys        |
+|   Safe   |               Private Files               |
+|   Tray   |             Quick Settings<p>             |
+|   UID    |             Unique Identifier             |
+| PinBoard |          Shortcuts<p>Start Menu           |
 
 </details></section>
 
@@ -64,58 +65,61 @@ PinBoard | Shortcuts<p>Start Menu
 
 [GRUB](https://www.gnu.org/software/grub/grub-download.html)
 
-
 ## Kernel
 
 [Linux](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git)
+[KernelNewbies](https://kernelnewbies.org/kernelbuild)
 
 <section><details><summary>
 
-
 ## OperatingSystem
+
 </summary>
 Notes: At the moment, I'm thinking C# Code will make up the majority of the Operating System.
 
 ### UID
- - All Files and Processes have a Unique ID
- - AlphaNumeric Case Sensitive (Base 62)
-   - 0-9a-zA-Z
- - U-#-##-###-####-#####-######-#######-########
+
+- All Files and Processes have a Unique ID
+- AlphaNumeric Case Sensitive (Base 62)
+  - 0-9a-zA-Z
+- U-#-##-###-####-#####-######-#######-########
 
 **UID Structure**
-UID | Purpose
-:-:|:-:
-U-1 | System
-U-1-00-#> | SubSystems
-U-1-01-#> | Tasks
-U-1-02-#> | System Settings
-U-1-03-#> | Directory Objects
-U-1-04-#> | Encryption Keys<p>Passwords
-U-1-05-#> | Files
-U-1-99-#> | User Generated UID<p>Non-Default Software
+
+|    UID    |                  Purpose                  |
+| :-------: | :---------------------------------------: |
+|    U-1    |                  System                   |
+| U-1-00-#> |                SubSystems                 |
+| U-1-01-#> |                   Tasks                   |
+| U-1-02-#> |              System Settings              |
+| U-1-03-#> |             Directory Objects             |
+| U-1-04-#> |        Encryption Keys<p>Passwords        |
+| U-1-05-#> |                   Files                   |
+| U-1-99-#> | User Generated UID<p>Non-Default Software |
 
 **Predefined UIDs**
-UID | Purpose
-:-:|:-:
-U-1-03-0_0 | System
-U-1-03-0_1 | Administrator
-U-1-03-0_2 | Administrator Group
-U-1-03-0_3 | User Group
-U-1-03-0_4 | Remote Connection
-U-1-03-0_5 | Deny Logon
-U-1-03-0_10 | Self
 
+|     UID     |       Purpose       |
+| :---------: | :-----------------: |
+| U-1-03-0_0  |       System        |
+| U-1-03-0_1  |    Administrator    |
+| U-1-03-0_2  | Administrator Group |
+| U-1-03-0_3  |     User Group      |
+| U-1-03-0_4  |  Remote Connection  |
+| U-1-03-0_5  |     Deny Logon      |
+| U-1-03-0_10 |        Self         |
 
 ### Cabinet
 
-  - File 
-    - File Data will be Organized in JSON Format
-    - Owner: Implied Full Control
-    - Folder: Content Property Contains List of File Names/UIDs
-    - Trash: Folder with Content Containing File Names/UIDs of files have been deleted
+- File
 
-  - Folder
-    - **Content Property:** Contains list of all file and folders within this Folder
+  - File Data will be Organized in JSON Format
+  - Owner: Implied Full Control
+  - Folder: Content Property Contains List of File Names/UIDs
+  - Trash: Folder with Content Containing File Names/UIDs of files have been deleted
+
+- Folder
+  - **Content Property:** Contains list of all file and folders within this Folder
 
 <section><details><summary>Properties</summary>
 
@@ -211,112 +215,112 @@ U-1-03-0_10 | Self
 
 </details></section>
 
-
 ### Folder Structure
+
 - \ (Local Root)
   - \Tools
   - \System
-      - \Information
-        - OS Version, OS Type, Time, Languages
-      - \Tools
-       - \File
-       - \Folder
-       - \Desktop
-       - \Command
-         - GetCommand
-           - Name
-           - Type
-         - GetHelp
-           - CommandName
-         - NewFile
-         - DeleteFile
-         - GetFile
-           - Read-Only
-         - ListFile
-           - Recurse
-           - File
-           - Folder
-         - MoveFile
-         - SetFile (Content)
-           - Replace (Default)
-           - Append
-         - SetFileMetaData
-           - Property
-           - Value
-         - CopyFile
-           - FilesOnly
-           - FoldersOnly
-           - Recurse
-           - KeepMetaData
-           - KeepPermission
-           - KeepOwner
-           - KeepEncryption
-         - LogConsole (Start/Stop)
-           - Path
-           - Status
-         - Filter
-           - By Property
-           - RegexR
-         - Sort
-           - **What Sorting Method?**
-           - By Property
-         - Unique
-           - By Property
-         - Ping
-         - Network
-         - NewDrive
-         - GetDrive
-         - SetDrive
-         - DeleteDrive
-         - GetVersion
-         - NewUID
-           - Type
-         - NewKey
-           - Algorithm
-           - Assemetric/Symmetric
-         - GetKey
-         - DeleteKey
-         - CompressFile
-         - DecompressFile
-         - EncryptFile
-         - DecryptFile
-         - ListTool
-           - Name
-         - InstallTool
-         - DeleteTool
-         - UpdateTool
-      - \Troubleshoot
-      - \Security
-        - \Directory
-        - \Update
-        - \Network
-        - \Anti-Malware
-        - \Privacy
-        - \Backups
-        - \Safe
-      - \Devices
-        - \Bluetooth
-        - \Displays
-          - \Screensaver
-          - \Background
-        - \Sound
-          - \Input
-          - \Output
-        - \Storage
-        - \Hardware
-      - \Users
-          - \ContextMenus
-      - \Policy
-        - \System
-        - \User
-      - \Logs
-      - \Cache
+    - \Information
+      - OS Version, OS Type, Time, Languages
+    - \Tools
+    - \File
+    - \Folder
+    - \Desktop
+    - \Command
+      - GetCommand
+        - Name
+        - Type
+      - GetHelp
+        - CommandName
+      - NewFile
+      - DeleteFile
+      - GetFile
+        - Read-Only
+      - ListFile
+        - Recurse
+        - File
+        - Folder
+      - MoveFile
+      - SetFile (Content)
+        - Replace (Default)
+        - Append
+      - SetFileMetaData
+        - Property
+        - Value
+      - CopyFile
+        - FilesOnly
+        - FoldersOnly
+        - Recurse
+        - KeepMetaData
+        - KeepPermission
+        - KeepOwner
+        - KeepEncryption
+      - LogConsole (Start/Stop)
+        - Path
+        - Status
+      - Filter
+        - By Property
+        - RegexR
+      - Sort
+        - **What Sorting Method?**
+        - By Property
+      - Unique
+        - By Property
+      - Ping
+      - Network
+      - NewDrive
+      - GetDrive
+      - SetDrive
+      - DeleteDrive
+      - GetVersion
+      - NewUID
+        - Type
+      - NewKey
+        - Algorithm
+        - Assemetric/Symmetric
+      - GetKey
+      - DeleteKey
+      - CompressFile
+      - DecompressFile
+      - EncryptFile
+      - DecryptFile
+      - ListTool
+        - Name
+      - InstallTool
+      - DeleteTool
+      - UpdateTool
+    - \Troubleshoot
+    - \Security
+      - \Directory
+      - \Update
+      - \Network
+      - \Anti-Malware
+      - \Privacy
+      - \Backups
+      - \Safe
+    - \Devices
+      - \Bluetooth
+      - \Displays
+        - \Screensaver
+        - \Background
+      - \Sound
+        - \Input
+        - \Output
+      - \Storage
+      - \Hardware
     - \Users
-        - \Settings
-        - \Desktop
-        - \Documents
-            - \Media
-            - \Downloads
+      - \ContextMenus
+    - \Policy
+      - \System
+      - \User
+    - \Logs
+    - \Cache
+    - \Users
+      - \Settings
+      - \Desktop
+      - \Documents
+        - \Media
+        - \Downloads
   - \Users
     - \<UserID>
       - Desktop
@@ -328,68 +332,68 @@ U-1-03-0_10 | Self
 - \\ (Remote Root)
   - \\ComputerName(or IP)\
 
-
 ### Terminal Tool
- - Scripting Pane
- - Command History Pane
- - AutoComplete
- - Personalization
-   - Size, Colors
+
+- Scripting Pane
+- Command History Pane
+- AutoComplete
+- Personalization
+  - Size, Colors
 
 ### Desktop
 
- - Widgets
+- Widgets
 
- - Desktop Shortcuts
+- Desktop Shortcuts
 
- - Drawer
+- Drawer
 
-   - Weather
+  - Weather
 
-   - Clock
-    - Opens Calendar
+  - Clock
+  - Opens Calendar
 
- - Active Tools
+- Active Tools
 
- - Tray
-  - Sound
-    - Output
-    - Input
-  - Connections
-    - Wifi
-    - Bluetooth
-    - Location
-    - HotSpot
-    - Cast
-  - Focus
+- Tray
+- Sound
+  - Output
+  - Input
+- Connections
+  - Wifi
+  - Bluetooth
+  - Location
+  - HotSpot
+  - Cast
+- Focus
 
- - Inbox
-  - Focus
-
-
+- Inbox
+- Focus
 
 ### File Tool
- - Language Character Support
- - Encoding Support
- - Show Line, Row of Cursor
- - Search / Replace
-   - Regex
- - Actions
-   - Open
-   - New
-   - Save
-   - Save As
-   - Properties
-     - MetaData
-     - Auto Save
-       - On Lose Focus
-       - IdleTime
-     - Auto Versioning
-       - Compresses
-   - Help
-   - Feedback
+
+- Language Character Support
+- Encoding Support
+- Show Line, Row of Cursor
+- Search / Replace
+  - Regex
+- Actions
+  - Open
+  - New
+  - Save
+  - Save As
+  - Properties
+    - MetaData
+    - Auto Save
+      - On Lose Focus
+      - IdleTime
+    - Auto Versioning
+      - Compresses
+  - Help
+  - Feedback
 
 **Processes**
+
 <section><details><summary>Open</summary>
 
         Open(Path, As, With, Parameters)
@@ -401,6 +405,7 @@ U-1-03-0_10 | Self
         - Else: Open
         - Update WhenOpened Property
         - Set IsReadOnly Property to True
+
 </details>
 <details><summary>Delete</summary>
 
@@ -411,6 +416,7 @@ U-1-03-0_10 | Self
         - Check Permissions
         - Update Folder Property to 'Deleted'
         - Update IsDeleted, WhenDeleted, WhoDeleted Properties
+
 </details>
 <details><summary>Move</summary>
 
@@ -424,6 +430,7 @@ U-1-03-0_10 | Self
         - Update DestinationPath Folder Content Property to Include Path
         - Update History Property
         - Update WhenChanged Property
+
 </details>
 <details><summary>Copy</summary>
 
@@ -439,6 +446,7 @@ U-1-03-0_10 | Self
             - Copy all MetaData
         - Set Folder as Destination
         - Update History Property
+
 </details>
 <details><summary>SaveContent</summary>
 
@@ -453,6 +461,7 @@ U-1-03-0_10 | Self
         - Update History Property
         - Update WhenContentChanged Property
         - Update WhenChanged Property
+
 </details>
 <details><summary>SaveMetaData</summary>
 
@@ -464,88 +473,91 @@ U-1-03-0_10 | Self
 
 </details></section>
 
-
-
 ### Folder Tool
- - View: Table, Content
- - Sort
- - Search
-   - Regex
 
+- View: Table, Content
+- Sort
+- Search
+  - Regex
 
 ### Context Menus
 
- - File
-   - Open
-   - Move
-   - Copy
-   - Properties
-   - Advanced
-     - Open With
-     - Open As
-     - Open With As
-     - Encrypt/Decrypt
-     - Compress/Decompress
-   - Delete
+- File
 
- - Folder
-   - Open
-   - New
-     - File
-     - Folder
-     - Shortcut
-   - Move
-   - Copy
-   - Paste
-   - Properties
-   - Advanced
-     - Open With
-     - Open As
-     - Open With As
-     - Encrypt/Decrypt
-     - Compress/Decompress
-   - Delete
+  - Open
+  - Move
+  - Copy
+  - Properties
+  - Advanced
+    - Open With
+    - Open As
+    - Open With As
+    - Encrypt/Decrypt
+    - Compress/Decompress
+  - Delete
 
- - Desktop
-   - New
-     - File
-     - Folder
-     - Shortcut
-   - Paste
-   - Next Background
-   - Tools
-     - Display
-     - Personalize
+- Folder
 
- - Drawer
-   - Tasks
+  - Open
+  - New
+    - File
+    - Folder
+    - Shortcut
+  - Move
+  - Copy
+  - Paste
+  - Properties
+  - Advanced
+    - Open With
+    - Open As
+    - Open With As
+    - Encrypt/Decrypt
+    - Compress/Decompress
+  - Delete
 
- - Drawer (Opened Tool)
-   - Minimize
-   - Maximize
-   - Open
-   - Advanced
-     - Open With
-     - Open As
-   - Dock/UnDuck
+- Desktop
 
- - Drawer (Docked Un-Opened Tool)
-   - Open
-   - UnDock
-   - Advanced
-     - Open With
-     - Open As
+  - New
+    - File
+    - Folder
+    - Shortcut
+  - Paste
+  - Next Background
+  - Tools
+    - Display
+    - Personalize
 
+- Drawer
 
+  - Tasks
+
+- Drawer (Opened Tool)
+
+  - Minimize
+  - Maximize
+  - Open
+  - Advanced
+    - Open With
+    - Open As
+  - Dock/UnDuck
+
+- Drawer (Docked Un-Opened Tool)
+  - Open
+  - UnDock
+  - Advanced
+    - Open With
+    - Open As
 
 ### Roster Tool
 
 - Default Accounts
+
   - System
   - Administrator
   - User
 
 - Default Groups
+
   - User
   - Administrator
 
@@ -553,27 +565,28 @@ U-1-03-0_10 | Self
   - Remote Connection
   - Deny Logon
 
-
 ### Safe Tool
 
- - Encryption Keys
+- Encryption Keys
 
 ### Keys Tool
 
- - Passwords
+- Passwords
 
 ### Settings Tool
+
     All Settings are displayed here
     Dynamically built
     Permissions determines which Settings/Categories are shown.
     All Settings have a Default Value
+
 <section>
 <details>
 <summary>Layout</summary>
 
- - User (SignInName)
-    - Accounts
-    - Passwords
+- User (SignInName)
+  - Accounts
+  - Passwords
 - Information
   - OS Type
   - OS Version
@@ -643,22 +656,22 @@ U-1-03-0_10 | Self
   - Hardware
     - Shows Hardware Information and Usage
 - Tasks
-   - Shows All Open Tasks
-      - File Path
-      - UID
-      - Who
-      - Usage
-      - Run Time
-   - Open Files
-      - Who
-      - UID
-      - Open Time
-      - Locked
-   - Automation
-     - System Tasks: Sanitation, Security Scans, TimeKeeper
-     - Triggers: Schedule, Log, ProcessStart, ProcessEnd, SignIn, SignOut, TurnOn, TurnOff
-     - Conditions: Logged In
-     - Command
+  - Shows All Open Tasks
+    - File Path
+    - UID
+    - Who
+    - Usage
+    - Run Time
+  - Open Files
+    - Who
+    - UID
+    - Open Time
+    - Locked
+  - Automation
+    - System Tasks: Sanitation, Security Scans, TimeKeeper
+    - Triggers: Schedule, Log, ProcessStart, ProcessEnd, SignIn, SignOut, TurnOn, TurnOff
+    - Conditions: Logged In
+    - Command
 - Tools
   - File Tool
   - Folders Tool
@@ -685,7 +698,9 @@ U-1-03-0_10 | Self
 
 ### Logs Tool
 
-
 ### Tool Store
+
+Supports GIT
+Supports Other Linux Install Methods: apt, YUM, dnf, snap
 
 </details></section>
