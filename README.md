@@ -2,16 +2,7 @@
 
 **Purpose:** Just a project to learn about all that goes into an OperatingSystem and who knows maybe something cool will happen along the way.
 
-**Notes?**
-
-1. Customizable
-2. Open
-
-<section><details><summary>
-
 ## Table Of Contents
-
-</summary>
 
 - [OfficeOS](#officeos)
   - [Table Of Contents](#table-of-contents)
@@ -34,13 +25,7 @@
     - [Logs Tool](#logs-tool)
     - [Tool Store](#tool-store)
 
-</details></section>
-
-<section><details><summary>
-
 ## Keywords
-
-</summary>
 
 |   Item   |                  Purpose                  |
 | :------: | :---------------------------------------: |
@@ -59,8 +44,6 @@
 |   UID    |             Unique Identifier             |
 | PinBoard |          Shortcuts<p>Start Menu           |
 
-</details></section>
-
 ## BootManager & BootLoader
 
 [GRUB](https://www.gnu.org/software/grub/grub-download.html)
@@ -71,19 +54,17 @@
 
 [KernelNewbies](https://kernelnewbies.org/kernelbuild)
 
-<section><details><summary>
-
 ## OperatingSystem
-
-</summary>
-Notes: At the moment, I'm thinking C# Code will make up the majority of the Operating System.
 
 ### UID
 
 - All Files and Processes have a Unique ID
 - AlphaNumeric Case Sensitive (Base 62)
-  - 0-9a-zA-Z
+  - Characters: 0-9a-zA-Z
 - U-#-##-###-####-#####-######-#######-########
+- Underscores (\_) will take the previous number and fill the rest of the slots with that number. There can only be 1 underscore (\_).
+  - Example: U-1-0_42 = U-1-00-000-0000-00000-000000-0000000-00000042
+  - Example: U-1-12-3_42 = U-1-12-333-3333-33333-333333-3333333-33333342
 
 **UID Structure**
 
@@ -107,7 +88,7 @@ Notes: At the moment, I'm thinking C# Code will make up the majority of the Oper
 | U-1-03-0_2  | Administrator Group |
 | U-1-03-0_3  |     User Group      |
 | U-1-03-0_4  |  Remote Connection  |
-| U-1-03-0_5  |     Deny Logon      |
+| U-1-03-0_5  |  Deny Logon Group   |
 | U-1-03-0_10 |        Self         |
 
 ### Cabinet
@@ -179,33 +160,22 @@ Notes: At the moment, I'm thinking C# Code will make up the majority of the Oper
     - Move
       - Set Folder Property
     - Copy
-      - Requires ReadContent
+      - Requires: ReadContent
       - Set to Deny to Prevent Copying
     - Delete
-      - Requires WriteContent
+      - Requires: WriteContent
       - Set to Deny to Prevent Deletion
     - Lock
       - Requires WriteContent
     - Read (Quick Permission)
-      - ReadContent
-      - ReadMetaData
-      - ReadHistory
-      - ReadPermission
-      - ReadOwner
+      - ReadContent, ReadMetaData, ReadHistory, ReadPermission, ReadOwner
     - Write (Quick Permission)
-      - WriteMetaData
-      - WriteContent
-      - IsLocked
-      - WhoLocked
+      - WriteMetaData, WriteContent, IsLocked, WhoLocked
     - ReadContent
     - WriteContent
     - ReadMetaData
     - WriteMetaData
-      - Name
-      - Description
-      - Type
-      - Encoding
-      - Language
+      - Name, Description, Type, Encoding, Language
     - ReadHistory
     - ReadPermission
     - WritePermission
@@ -229,8 +199,7 @@ Notes: At the moment, I'm thinking C# Code will make up the majority of the Oper
     - \Desktop
     - \Command
       - GetCommand
-        - Name
-        - Type
+        - Name, Type
       - GetHelp
         - CommandName
       - NewFile
@@ -238,30 +207,18 @@ Notes: At the moment, I'm thinking C# Code will make up the majority of the Oper
       - GetFile
         - Read-Only
       - ListFile
-        - Recurse
-        - File
-        - Folder
+        - Recurse, File, Folder
       - MoveFile
       - SetFile (Content)
-        - Replace (Default)
-        - Append
+        - Replace (Default), Append
       - SetFileMetaData
-        - Property
-        - Value
+        - Property, Value
       - CopyFile
-        - FilesOnly
-        - FoldersOnly
-        - Recurse
-        - KeepMetaData
-        - KeepPermission
-        - KeepOwner
-        - KeepEncryption
+        - FilesOnly, FoldersOnly, Recurse, KeepMetaData, KeepPermission, KeepOwner, KeepEncryption
       - LogConsole (Start/Stop)
-        - Path
-        - Status
+        - Path, Status
       - Filter
-        - By Property
-        - RegexR
+        - By Property, RegexR
       - Sort
         - **What Sorting Method?**
         - By Property
@@ -277,8 +234,7 @@ Notes: At the moment, I'm thinking C# Code will make up the majority of the Oper
       - NewUID
         - Type
       - NewKey
-        - Algorithm
-        - Assemetric/Symmetric
+        - Algorithm, Assemetric/Symmetric
       - GetKey
       - DeleteKey
       - CompressFile
@@ -568,18 +524,21 @@ Notes: At the moment, I'm thinking C# Code will make up the majority of the Oper
 
 ### Safe Tool
 
-- Encryption Keys
+- Encrypted Files
 
 ### Keys Tool
 
 - Passwords
+- Encryption Keys
 
 ### Settings Tool
 
-    All Settings are displayed here
-    Dynamically built
-    Permissions determines which Settings/Categories are shown.
-    All Settings have a Default Value
+- All settings are Dynamically built based on folder
+- Dynamically built based on Permissions
+- Permissions determines which Settings/Categories are shown.
+- All Settings have a Default Value
+- All Settings can be reverted to Default Value
+- All Settings can be reverted to Previous Value
 
 <section>
 <details>
@@ -658,21 +617,14 @@ Notes: At the moment, I'm thinking C# Code will make up the majority of the Oper
     - Shows Hardware Information and Usage
 - Tasks
   - Shows All Open Tasks
-    - File Path
-    - UID
-    - Who
-    - Usage
-    - Run Time
+    - File Path, UID, Who, Usage, Run Time
   - Open Files
-    - Who
-    - UID
-    - Open Time
-    - Locked
+    - Who, UID, Open Time, Locked
   - Automation
     - System Tasks: Sanitation, Security Scans, TimeKeeper
     - Triggers: Schedule, Log, ProcessStart, ProcessEnd, SignIn, SignOut, TurnOn, TurnOff
     - Conditions: Logged In
-    - Command
+    - File Path
 - Tools
   - File Tool
   - Folders Tool
@@ -704,4 +656,4 @@ Notes: At the moment, I'm thinking C# Code will make up the majority of the Oper
 Supports GIT
 Supports Other Linux Install Methods: apt, YUM, dnf, snap
 
-</details></section>
+**Apps:** apt, YUM, dnf, snap
