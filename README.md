@@ -25,6 +25,11 @@
     - [Logs Tool](#logs-tool)
     - [Tool Store](#tool-store)
 
+## To Do
+
+- [ ] Linux Kernel
+- [ ] Bootloader
+
 ## Keywords
 
 |   Item   |                  Purpose                  |
@@ -193,6 +198,7 @@
   - \System
     - \Information
       - OS Version, OS Type, Time, Languages
+    - \Logs
     - \Tools
     - \File
     - \Folder
@@ -353,80 +359,86 @@
 
 <section><details><summary>Open</summary>
 
-        Open(Path, As, With, Parameters)
-        - If As
-            - Prompt Authentication
-            - Validate Authentication
-        - Check Permissions
-        - If With: Send Path and Parameters to Tool
-        - Else: Open
-        - Update WhenOpened Property
-        - Set IsReadOnly Property to True
+Open(Path, As, With, Parameters)
+
+- If As
+  - Prompt Authentication
+  - Validate Authentication
+- Check Permissions
+- If With: Send Path and Parameters to Tool
+- Else: Open
+- Update WhenOpened Property
+- Set IsReadOnly Property to True
 
 </details>
 <details><summary>Delete</summary>
 
-        Delete(Path, As)
-        - If As
-            - Prompt Authentication
-            - Validate Authentication
-        - Check Permissions
-        - Update Folder Property to 'Deleted'
-        - Update IsDeleted, WhenDeleted, WhoDeleted Properties
+Delete(Path, As)
+
+- If As
+  - Prompt Authentication
+  - Validate Authentication
+- Check Permissions
+- Update Folder Property to 'Deleted'
+- Update IsDeleted, WhenDeleted, WhoDeleted Properties
 
 </details>
 <details><summary>Move</summary>
 
-        Move(Path, DestinationPath, As)
-        - If As
-            - Prompt Authentication
-            - Validate Authentication
-        - Check Permission
-        - Update Folder's Content Property to Exclude Path
-        - Update Folder Property to DestinationPath
-        - Update DestinationPath Folder Content Property to Include Path
-        - Update History Property
-        - Update WhenChanged Property
+Move(Path, DestinationPath, As)
+
+- If As
+  - Prompt Authentication
+  - Validate Authentication
+- Check Permission
+- Update Folder's Content Property to Exclude Path
+- Update Folder Property to DestinationPath
+- Update DestinationPath Folder Content Property to Include Path
+- Update History Property
+- Update WhenChanged Property
 
 </details>
 <details><summary>Copy</summary>
 
-        Copy(Path, DestinationPath, As, KeepMetaData)
-        - If As
-            - Prompt Authentication
-            - Validate Authentication
-        - Check Permission
-        - Copy All but MetaData Section
-            - If DestinationPath is same
-            - Append Name
-        - If KeepMetaData
-            - Copy all MetaData
-        - Set Folder as Destination
-        - Update History Property
+Copy(Path, DestinationPath, As, KeepMetaData)
+
+- If As
+  - Prompt Authentication
+  - Validate Authentication
+- Check Permission
+- Copy All but MetaData Section
+  - If DestinationPath is same
+  - Append Name
+- If KeepMetaData
+  - Copy all MetaData
+- Set Folder as Destination
+- Update History Property
 
 </details>
 <details><summary>SaveContent</summary>
 
-        SaveContent(NewContent)
-        - Check IsLocked Property
-        - Check If Opened
-        - Check Permission
-        - Set IsLocked Property to True
-        - Set WhoLocked Property to User.UID
-        - Set IsReadOnly Property to False
-        - Set Content Property
-        - Update History Property
-        - Update WhenContentChanged Property
-        - Update WhenChanged Property
+SaveContent(NewContent)
+
+- Check IsLocked Property
+- Check If Opened
+- Check Permission
+- Set IsLocked Property to True
+- Set WhoLocked Property to User.UID
+- Set IsReadOnly Property to False
+- Set Content Property
+- Update History Property
+- Update WhenContentChanged Property
+- Update WhenChanged Property
 
 </details>
 <details><summary>SaveMetaData</summary>
 
-        SaveMetaData(Property, Value)
-        - Check Permission for Property
-        - Set Property to Value
-        - Update History Property
-        - Update WhenChanged Property
+SaveMetaData(Property, Value)
+
+- Check Permission for Property
+- Set Property to Value
+- Update History Property
+- Update WhenChanged Property
 
 </details></section>
 
@@ -533,9 +545,8 @@
 
 ### Settings Tool
 
-- All settings are Dynamically built based on folder
-- Dynamically built based on Permissions
-- Permissions determines which Settings/Categories are shown.
+- All settings are Dynamically built based on folder of setting file
+- Enabled/Disabled based on Permission to Specific Setting
 - All Settings have a Default Value
 - All Settings can be reverted to Default Value
 - All Settings can be reverted to Previous Value
@@ -557,7 +568,8 @@
     - Color
     - DateTime Format
     - Silent Inbox
-  - Task Frame Colors
+  - Task Outline Colors
+    - Single Colors
   - Background
     - Slide Show, Static, etc.
     - Fit, Stretch, etc.
@@ -635,6 +647,7 @@
   - Drawer Menu
 - Clipboard
   - Multi-Paste Mode
+  - Ring Mode
 - Accessibility
   - Easy Desktop Mode
   - Reader
@@ -645,11 +658,28 @@
   - Magnifier
 - Help
 - Feedback
+- Shortcuts
+  - Ctrl Key : Shortcuts for Currently Focused Program
+  - Shift Key : Nothing because it controls the keyboard. 2 Key combinations recommended for using this Key. Shift+Ctrl+Key = Text based actions. Bold, Underline, Italics, StrikeThrough, Center, etc.
+  - Alt Key : Shortcuts
+  - Menu Key : Menu + Num Key = 1st, 2nd, etc. & Menu+OtherKey
+  - Home Key : Controls OS, Opens Frequent Software
+    - Home + Tab = Switch Focus to next program
+    - Home + Ctrl + Tab = Switch Workspace
 
 </details>
 </section>
 
 ### Logs Tool
+
+Code 0 - Emergency - System Unusable
+Code 1 - Alert - Urgent Fault
+Code 2 - Critical - urgent fault likely to occur
+Code 3 - Error - non-urgent fault
+Code 4 - Warning - Likely to lead to error
+Code 5 - Notice - Could lead to error
+Code 6 - Informational - Normal Reportable Event
+Code 7 - Debug - Verbose Status Conditions
 
 ### Tool Store
 
